@@ -1,0 +1,16 @@
+---
+platform: linux
+
+inputs:
+- name: env
+
+params:
+  ENV_FILE: env.yml
+run:
+  path: bash
+  args:
+  - "-c"
+  - |
+    cat /var/version && echo ""
+    set -e
+    om --env env/"${ENV_FILE}" bosh-env
