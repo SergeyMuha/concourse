@@ -5,8 +5,8 @@ inputs:
 - name: env
 
 params:
-  ENV_FILE: env.yml
-  # MANIF_FILE:
+  # ENV_FILE: env.yml
+  # MANIF_FILE: env.yml
   # OPS_FILE:
   # DEPLOYMENT_NAME:
 run:
