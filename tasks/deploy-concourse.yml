@@ -14,3 +14,4 @@ run:
     cat /var/version && echo ""
     set -e
     eval "$(om --env env/"${ENV_FILE}" bosh-env)"
+    bosh env
