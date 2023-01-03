@@ -6,6 +6,9 @@ inputs:
 
 params:
   ENV_FILE: env.yml
+  MANIF_FILE:
+  OPS_FILE:
+  DEPLOYMENT_NAME:
 run:
   path: bash
   args:
@@ -14,4 +17,6 @@ run:
     cat /var/version && echo ""
     set -e
     eval "$(om --env env/"${ENV_FILE}" bosh-env)"
-    bosh env
+    bosh -d "${DEPLOYMENT_NAME}" deploy \
+      -o env/"${OPS_FILE}" \
+      env/"${MANIF_FILE}"

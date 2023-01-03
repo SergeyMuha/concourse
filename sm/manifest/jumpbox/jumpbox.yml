@@ -1,0 +1,32 @@
+name: ((jumpbox_deployment_name))
+
+instance_groups:
+- name: jumpbox
+  instances: 1
+  azs:       [AZ1]
+  stemcell:  default
+  networks:
+  - name: Infrastructure
+  persistent_disk: 10240
+  vm_type: large
+  jobs:
+    - { release: jumpbox, name: jumpbox }
+    - { release: jumpbox, name: inventory }
+
+update:
+  canaries: 0
+  max_in_flight: 1
+  serial: true
+  canary_watch_time: 1000-120000
+  update_watch_time: 1000-120000
+
+stemcells:
+- alias: default
+  os: ubuntu-xenial
+  version: latest
+
+releases:
+- name:    jumpbox
+  version: 4.10.0
+  url:     https://github.com/cloudfoundry-community/jumpbox-boshrelease/releases/download/v4.10.0/jumpbox-4.10.0.tgz
+  sha1:    41eb0b1874da0a18a9425cc8ac064cab41661ea1
