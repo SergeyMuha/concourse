@@ -6,9 +6,9 @@ inputs:
 
 params:
   ENV_FILE: env.yml
-  MANIF_FILE:
-  OPS_FILE:
-  DEPLOYMENT_NAME:
+  # MANIF_FILE:
+  # OPS_FILE:
+  # DEPLOYMENT_NAME:
 run:
   path: bash
   args:
