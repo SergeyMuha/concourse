@@ -13,6 +13,4 @@ run:
   - |
     cat /var/version && echo ""
     set -e
-    eval "$(om --env env.yml bosh-env)"
-    bosh env
-
+    eval "$(om --env env/"${ENV_FILE}" bosh-env)"
