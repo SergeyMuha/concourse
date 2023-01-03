@@ -18,7 +18,7 @@ run:
     cat /var/version && echo ""
     set -e
     eval "$(om --env env/"${ENV_FILE}" bosh-env)"
-    if [ $DRY_RUN == true ] ;
+    if [ "${DRY_RUN}" == true ] ;
     then
      echo dry
      bosh -n -d "${DEPLOYMENT_NAME}" deploy \
