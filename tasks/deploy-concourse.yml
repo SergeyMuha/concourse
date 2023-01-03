@@ -9,6 +9,7 @@ params:
   # MANIF_FILE: env.yml
   # OPS_FILE:
   # DEPLOYMENT_NAME:
+  DRY_RUN: false
 run:
   path: bash
   args:
@@ -17,6 +18,11 @@ run:
     cat /var/version && echo ""
     set -e
     eval "$(om --env env/"${ENV_FILE}" bosh-env)"
-    bosh -d "${DEPLOYMENT_NAME}" deploy \
+    if { DRY_RUN == true } then
+     {bosh -n -d "${DEPLOYMENT_NAME}" deploy \
       -o env/"${OPS_FILE}" \
-      env/"${MANIF_FILE}"
+      env/"${MANIF_FILE}" \
+      --dry-run }
+    else {bosh -n -d "${DEPLOYMENT_NAME}" deploy \
+      -o env/"${OPS_FILE}" \
+      env/"${MANIF_FILE}" }
