@@ -18,17 +18,14 @@ run:
     cat /var/version && echo ""
     set -e
     eval "$(om --env env/"${ENV_FILE}" bosh-env)"
-    echo "${DRY_RUN}"
     if [ "${DRY_RUN}" == true ] ;
     then
-     echo dryrun
      bosh -n -d "${DEPLOYMENT_NAME}" deploy \
       -o env/"${OPS_FILE}" \
       env/"${MANIF_FILE}" \
       --dry-run 
       
     else
-      echo run
       bosh -n -d "${DEPLOYMENT_NAME}" deploy \
       -o env/"${OPS_FILE}" \
       env/"${MANIF_FILE}" 
