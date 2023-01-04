@@ -6,7 +6,6 @@
   value:
     name: ((user1.username))
     shell: /bin/bash
-    password: ((user1.password))
     sudo: true
     ssh_keys:
       - ((ssh_key_user1.public_key))
