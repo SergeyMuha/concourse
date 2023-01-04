@@ -30,3 +30,4 @@ run:
       -o env/"${OPS_FILE}" \
       env/"${MANIF_FILE}" 
     fi
+    bosh -d -d "${DEPLOYMENT_NAME}" is --column=IPs
