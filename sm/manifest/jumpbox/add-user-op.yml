@@ -9,3 +9,11 @@
     sudo: true
     ssh_keys:
       - ((ssh_key_user1.public_key))
+- type: replace
+  path: /instance_groups/name=jumpbox/jobs/name=jumpbox/properties?/jumpbox?/users?/-
+  value:
+    name: max
+    shell: /bin/bash
+    sudo: true
+    ssh_keys:
+      - ((ssh_key_user1.public_key))
